@@ -1,13 +1,24 @@
 package com.santis.minharua.data
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
+import com.santis.minharua.R
+import java.io.Serializable
 
-@Entity (tableName = "incidentes")
+@Entity(
+    tableName = "incidentes",
+    foreignKeys = [
+        ForeignKey(
+            entity = Categoria::class,
+            parentColumns = arrayOf("cat_id"),
+            childColumns = arrayOf("id_cat"),
+            onDelete = ForeignKey.CASCADE
+        )
+    ]
+)
 data class Incidente(
-    @PrimaryKey (autoGenerate = true) val inc_id: Int,
+    @PrimaryKey(autoGenerate = true) val inc_id: Int? = null,
     @ColumnInfo(name = "inc_titulo") val tituloInc: String?,
     @ColumnInfo(name = "inc_descricao") val descricaoInc: String?,
-    @ColumnInfo(name = "inc_imagem") val imagemInc: String?
-)
+    @ColumnInfo(name = "inc_imagem") val imagemInc: Int = R.drawable.ic_city,
+    @ColumnInfo(name = "id_cat") val catId: Int
+) : Serializable

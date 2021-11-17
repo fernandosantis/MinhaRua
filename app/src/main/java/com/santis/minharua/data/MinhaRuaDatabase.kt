@@ -6,9 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(entities = [Categoria::class, Incidente::class], version = 1)
-abstract class MinhaRuaDatabase: RoomDatabase() {
+abstract class MinhaRuaDatabase : RoomDatabase() {
     abstract fun categoriaDao(): CategoriaDao
     abstract fun incidenteDao(): IncidenteDao
+    abstract fun catincidenteDao(): CategoriaIncidentesDao
 
     companion object {
         @Volatile

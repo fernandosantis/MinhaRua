@@ -2,14 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/lay_ocorrencia"
+    android:id="@+id/lay_incidente"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginBottom="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/lay_head"
+        android:id="@+id/lay_cabecalho"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:background="@color/primaryDarkColor"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/img_icon"
+            android:id="@+id/img_icone"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_margin="8dp"
@@ -40,8 +40,8 @@
             android:layout_marginEnd="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toStartOf="@id/cmd_open_close"
-            app:layout_constraintStart_toEndOf="@+id/img_icon"
+            app:layout_constraintEnd_toStartOf="@id/cmd_expandir"
+            app:layout_constraintStart_toEndOf="@+id/img_icone"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Titulo" />
 
@@ -54,8 +54,8 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@id/lbl_resumo"
-            app:layout_constraintEnd_toStartOf="@id/cmd_open_close"
-            app:layout_constraintStart_toEndOf="@+id/img_icon"
+            app:layout_constraintEnd_toStartOf="@id/cmd_expandir"
+            app:layout_constraintStart_toEndOf="@+id/img_icone"
             app:layout_constraintTop_toBottomOf="@id/lbl_titulo"
             tools:text="Categoria" />
 
@@ -70,12 +70,12 @@
             android:text="Descricao"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/cmd_open_close"
-            app:layout_constraintStart_toEndOf="@id/img_icon"
+            app:layout_constraintEnd_toStartOf="@id/cmd_expandir"
+            app:layout_constraintStart_toEndOf="@id/img_icone"
             app:layout_constraintTop_toBottomOf="@id/lbl_categoria" />
 
         <ImageView
-            android:id="@+id/cmd_open_close"
+            android:id="@+id/cmd_expandir"
             android:layout_width="32dp"
             android:layout_height="0dp"
             android:clickable="true"
@@ -89,7 +89,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/lay_card"
+        android:id="@+id/lay_cartao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
@@ -97,14 +97,14 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lay_head">
+        app:layout_constraintTop_toBottomOf="@id/lay_cabecalho">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/img_foto"
+                android:id="@+id/img_imagem"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="12dp"
@@ -126,33 +126,33 @@
                 android:lineSpacingExtra="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_foto"
+                app:layout_constraintTop_toBottomOf="@+id/img_imagem"
                 tools:text="Descrição" />
 
             <ImageView
-                android:id="@+id/cmd_edit"
+                android:id="@+id/cmd_editar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="12dp"
-                app:layout_constraintEnd_toStartOf="@+id/cmd_delete"
-                app:layout_constraintTop_toTopOf="@+id/cmd_share"
+                app:layout_constraintEnd_toStartOf="@+id/cmd_apagar"
+                app:layout_constraintTop_toTopOf="@+id/cmd_compartilhar"
                 app:srcCompat="@drawable/ic_edit"
                 app:tint="@color/primaryDarkColor" />
 
             <ImageView
-                android:id="@+id/cmd_delete"
+                android:id="@+id/cmd_apagar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="12dp"
-                app:layout_constraintEnd_toStartOf="@+id/cmd_share"
-                app:layout_constraintTop_toTopOf="@+id/cmd_share"
+                app:layout_constraintEnd_toStartOf="@+id/cmd_compartilhar"
+                app:layout_constraintTop_toTopOf="@+id/cmd_compartilhar"
                 app:srcCompat="@drawable/ic_trash"
                 app:tint="@color/primaryDarkColor"
 
                 />
 
             <ImageView
-                android:id="@+id/cmd_share"
+                android:id="@+id/cmd_compartilhar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"

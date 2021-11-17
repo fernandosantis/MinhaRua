@@ -9,13 +9,13 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:src="@drawable/vc_rua"
+        android:src="@drawable/vc_street"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/lay_placa"
+        android:id="@+id/lay_placa_rua"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blue_900"
@@ -47,7 +47,7 @@
         <ImageView
             android:id="@+id/iv_div"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/white"
             app:layout_constraintTop_toBottomOf="@id/lbl_endereco" />
@@ -88,16 +88,16 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_ocorrencias"
+        android:id="@+id/rv_incidentes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lay_placa" />
+        app:layout_constraintTop_toBottomOf="@id/lay_placa_rua" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/cmd_nova_ocorrencia"
+        android:id="@+id/cmd_novo_incidente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"

@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_arvore.xml" value="0.21666666666666667" />
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_color.xml" value="0.21666666666666667" />
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_papel_chao.xml" value="0.21666666666666667" />
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_pixacao.xml" value="0.21666666666666667" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/activity_main.xml" value="0.35435897435897434" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/item_ocorrencia.xml" value="0.33425925925925926" />
       </map>

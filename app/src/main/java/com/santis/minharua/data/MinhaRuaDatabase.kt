@@ -4,6 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.santis.minharua.data.interfaces.CategoriaDao
+import com.santis.minharua.data.interfaces.CategoriaIncidentesDao
+import com.santis.minharua.data.interfaces.IncidenteDao
+import com.santis.minharua.data.model.Categoria
+import com.santis.minharua.data.model.Incidente
 
 @Database(entities = [Categoria::class, Incidente::class], version = 1)
 abstract class MinhaRuaDatabase : RoomDatabase() {

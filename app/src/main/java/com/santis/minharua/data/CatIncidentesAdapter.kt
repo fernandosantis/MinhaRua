@@ -1,4 +1,4 @@
-package com.santis.minharua.model
+package com.santis.minharua.data
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +9,16 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.santis.minharua.R
-import com.santis.minharua.data.CategoriaIncidentes
+import com.santis.minharua.data.model.CategoriaIncidentes
+import com.santis.minharua.util.Image
 
 class CatIncidentesAdapter(val incidenteList: List<CategoriaIncidentes>) : RecyclerView.Adapter<CatIncidentesAdapter.IncidenteViewHolder>() {
 
+    var listenerShare: (View) -> Unit = {}
+
     inner class IncidenteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+        val layIndicente = view.findViewById<ConstraintLayout>(R.id.lay_incidente)
 
         // Cabeçalho
         val layCabecalho = view.findViewById<ConstraintLayout>(R.id.lay_cabecalho)
@@ -40,7 +45,7 @@ class CatIncidentesAdapter(val incidenteList: List<CategoriaIncidentes>) : Recyc
         return IncidenteViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: CatIncidentesAdapter.IncidenteViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: IncidenteViewHolder, position: Int) {
         with(holder) {
             // Cabeçalho
             layCabecalho.visibility = View.VISIBLE
@@ -49,11 +54,42 @@ class CatIncidentesAdapter(val incidenteList: List<CategoriaIncidentes>) : Recyc
             lblTitulo.text = incidenteList[position].incidentes[0].tituloInc
             lblCategoria.text = incidenteList[position].categoria.nomeCat
             lblResumo.text = incidenteList[position].incidentes[0].descricaoInc
+            lblResumo.visibility = View.VISIBLE
+            cmdExpandir.setImageResource(R.drawable.ic_down)
+            cmdExpandir.tag = "off"
 
             // CardView
-            cvCartao.visibility = View.VISIBLE
+            cvCartao.visibility = View.GONE
             imgImagem.setImageResource(incidenteList[position].incidentes[0].imagemInc)
             lblDescricao.text = incidenteList[position].incidentes[0].descricaoInc
+
+            // Botão Expandir
+            cmdExpandir.setOnClickListener(
+                View.OnClickListener {
+                    if (cmdExpandir.tag == "off") {
+                        // lblResumo.visibility = View.INVISIBLE
+                        lblResumo.animate().alpha(0.0f)
+                        cvCartao.visibility = View.VISIBLE
+                        cmdExpandir.setImageResource(R.drawable.ic_up)
+                        cmdExpandir.tag = "on"
+                    } else {
+                        // lblResumo.visibility = View.VISIBLE
+                        lblResumo.animate().alpha(1.0f)
+                        cvCartao.visibility = View.GONE
+                        cmdExpandir.setImageResource(R.drawable.ic_down)
+                        cmdExpandir.tag = "off"
+                    }
+                }
+            )
+
+            // Botão Compartilhar
+            cmdCompartilhar.setOnClickListener {
+                listenerShare = { incidente ->
+                    Image.share(it.context, incidente)
+                }
+
+                listenerShare(layIndicente)
+            }
         }
     }
 

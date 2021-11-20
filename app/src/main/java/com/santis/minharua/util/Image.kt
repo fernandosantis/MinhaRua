@@ -18,6 +18,7 @@ import java.io.FileOutputStream
 import java.io.OutputStream
 import java.lang.Exception
 
+// Para Salvar e Compartilhar Cards
 class Image {
     companion object {
         fun share(context: Context, card: View) {

@@ -1,4 +1,4 @@
-package com.santis.minharua.data
+package com.santis.minharua.data.model
 
 import androidx.room.*
 import com.santis.minharua.R

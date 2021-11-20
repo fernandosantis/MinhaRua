@@ -1,4 +1,4 @@
-package com.santis.minharua.data
+package com.santis.minharua.data.model
 
 import androidx.room.Embedded
 import androidx.room.Relation

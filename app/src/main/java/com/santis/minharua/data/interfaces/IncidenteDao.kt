@@ -1,6 +1,7 @@
-package com.santis.minharua.data
+package com.santis.minharua.data.interfaces
 
 import androidx.room.*
+import com.santis.minharua.data.model.Incidente
 
 @Dao
 interface IncidenteDao {

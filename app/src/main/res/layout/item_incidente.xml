@@ -10,24 +10,21 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/lay_cabecalho"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:background="@color/primaryDarkColor"
-        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/img_icone"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="8dp"
-            android:padding="4dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="16dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
             app:srcCompat="@drawable/ic_color"
             app:tint="@color/white" />
@@ -40,23 +37,23 @@
             android:layout_marginEnd="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/lbl_resumo"
             app:layout_constraintEnd_toStartOf="@id/cmd_expandir"
             app:layout_constraintStart_toEndOf="@+id/img_icone"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/img_icone"
             tools:text="Titulo" />
 
         <TextView
             android:id="@+id/lbl_categoria"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:layout_marginHorizontal="4dp"
+            android:layout_marginTop="2dp"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toTopOf="@id/lbl_resumo"
-            app:layout_constraintEnd_toStartOf="@id/cmd_expandir"
-            app:layout_constraintStart_toEndOf="@+id/img_icone"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lbl_titulo"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Categoria" />
 
         <TextView
@@ -65,23 +62,23 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:lineSpacingExtra="8dp"
             android:lines="1"
             android:text="Resumo"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/img_icone"
             app:layout_constraintEnd_toStartOf="@id/cmd_expandir"
             app:layout_constraintStart_toEndOf="@id/img_icone"
-            app:layout_constraintTop_toBottomOf="@id/lbl_categoria" />
+            app:layout_constraintTop_toBottomOf="@id/lbl_titulo" />
 
         <ImageView
             android:id="@+id/cmd_expandir"
             android:layout_width="32dp"
             android:layout_height="0dp"
             android:clickable="true"
+            android:tag="off"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lbl_categoria"
             app:layout_constraintVertical_chainStyle="packed"
             app:srcCompat="@drawable/ic_down"
             app:tint="@color/white" />
@@ -93,8 +90,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
-        app:cardElevation="2dp"
-
+        app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lay_cabecalho">

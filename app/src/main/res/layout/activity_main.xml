@@ -4,13 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@color/blue_grey_300"
     tools:context=".ui.MainActivity">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:src="@drawable/vc_street"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/faixas"
+        android:layout_width="16dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/shp_faixas_vert"
+        android:layerType="software"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -92,17 +95,28 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cmd_novo_incidente"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lay_placa_rua" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/cmd_novo_incidente"
-        android:layout_width="wrap_content"
+    <com.cleveroad.loopbar.widget.LoopBarView
+        android:id="@id/cmd_novo_incidente"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_input_add"
+        app:enls_placeholderId="@id/placeHolder"
+        app:enls_orientation="horizontal"
+        app:enls_selectionGravity="start"
+        app:enls_selectionMargin="16dp"
+        app:enls_overlaySize="8dp"
+        app:enls_selectionInAnimation="@animator/enls_scale_restore"
+        app:enls_selectionOutAnimation="@animator/enls_scale_small"
+        app:enls_selectionBackground="@android:color/holo_blue_dark"
+        app:enls_menu="@menu/loopbar"
+        app:enls_scrollMode="infinite"
+        app:enls_listBackground="@color/secondaryDarkColor"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

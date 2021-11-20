@@ -2,8 +2,8 @@ package com.santis.minharua.util
 
 import android.content.Context
 import com.santis.minharua.R
-import com.santis.minharua.data.Categoria
 import com.santis.minharua.data.MinhaRuaDatabase
+import com.santis.minharua.data.model.Categoria
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 

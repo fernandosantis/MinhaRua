@@ -1,8 +1,9 @@
-package com.santis.minharua.data
+package com.santis.minharua.data.interfaces
 
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
+import com.santis.minharua.data.model.CategoriaIncidentes
 
 @Dao
 interface CategoriaIncidentesDao {

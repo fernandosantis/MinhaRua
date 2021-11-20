@@ -3,13 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.20092592592592592" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_arvore.xml" value="0.21666666666666667" />
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_carro.xml" value="0.1984375" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_color.xml" value="0.21666666666666667" />
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_launcher_background.xml" value="0.20092592592592592" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_papel_chao.xml" value="0.21666666666666667" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_pixacao.xml" value="0.21666666666666667" />
-        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/activity_main.xml" value="0.35435897435897434" />
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_ruas.xml" value="0.1984375" />
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_vagas.xml" value="0.1984375" />
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/shp_faixas.xml" value="0.1984375" />
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/shp_faixas_horiz.xml" value="0.20092592592592592" />
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/shp_faixas_vert.xml" value="0.20092592592592592" />
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/vc_street.xml" value="0.1984375" />
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/activity_main.xml" value="0.20052083333333334" />
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/activity_splash.xml" value="0.35435897435897434" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/item_incidente.xml" value="0.3723958333333333" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/item_ocorrencia.xml" value="0.33425925925925926" />
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.20092592592592592" />
       </map>
     </option>
   </component>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@color/blue_grey_100"
+    tools:context=".ui.SplashActivity">
+    <TextView
+        android:id="@+id/faixas"
+        android:layout_width="16dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/shp_faixas_vert"
+        android:layerType="software"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="96dp"
+        android:src="@drawable/logo_light"
+        app:layout_constraintBottom_toTopOf="@id/lay_cep"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lay_cep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/indigo_800"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_logo">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_cep"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="CEP"
+            app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxStrokeColor="@color/white"
+            app:helperText="Digite o Cep de sua rua"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/cmd_ok"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconDrawable="@drawable/ic_location"
+            app:startIconTint="@color/primaryColor">
+
+
+            <com.hipo.maskededittext.MaskedEditText
+                android:id="@+id/txt_cep"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                app:maskPattern="#####-###"
+                app:maskType="custom"
+                app:returnPattern="########" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cmd_ok"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:padding="16dp"
+            android:text="Entrar"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="16dp"
+            app:backgroundTint="@color/secondaryColor"
+            app:layout_constraintBottom_toTopOf="@id/lbl_resp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/pg_cep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cmd_ok" />
+
+        <TextView
+            android:id="@+id/lbl_resp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cmd_ok" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

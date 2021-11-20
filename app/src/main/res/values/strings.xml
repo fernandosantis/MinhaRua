@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">Minha Rua</string>
+    <string name="app_name">Conserte esta Rua</string>
     <string name="label_share">Compartilhar</string>
+    <string name="cep"></string>
 </resources>

@@ -20,5 +20,6 @@ data class Incidente(
     @ColumnInfo(name = "inc_titulo") val tituloInc: String?,
     @ColumnInfo(name = "inc_descricao") val descricaoInc: String?,
     @ColumnInfo(name = "inc_imagem") val imagemInc: Int = R.drawable.ic_city,
+    @ColumnInfo(name = "inc_cep") val cepInc: String,
     @ColumnInfo(name = "id_cat") val catId: Int
 ) : Serializable

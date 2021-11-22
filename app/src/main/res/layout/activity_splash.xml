@@ -7,14 +7,15 @@
     android:animateLayoutChanges="true"
     android:background="@color/blue_grey_100"
     tools:context=".ui.SplashActivity">
+
     <TextView
-        android:id="@+id/faixas"
         android:layout_width="16dp"
         android:layout_height="match_parent"
         android:background="@drawable/shp_faixas_vert"
         android:layerType="software"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
     <ImageView
         android:id="@+id/iv_logo"
         android:layout_width="match_parent"

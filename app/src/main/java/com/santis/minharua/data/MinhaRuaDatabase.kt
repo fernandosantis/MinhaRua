@@ -26,7 +26,7 @@ abstract class MinhaRuaDatabase : RoomDatabase() {
                     context.applicationContext,
                     MinhaRuaDatabase::class.java,
                     "minharua.db"
-                ).build()
+                ).createFromAsset("database/minharua_db.db").build()
                 INSTANCE = instance
                 instance
             }

@@ -5,7 +5,6 @@ import android.os.StrictMode
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.nightonke.boommenu.BoomButtons.HamButton
 import com.santis.minharua.MinhaRua
 import com.santis.minharua.data.CatIncidentesAdapter
 import com.santis.minharua.data.MinhaRuaDatabase
@@ -30,7 +29,6 @@ class MainActivity : AppCompatActivity() {
             layoutInflater
         )
         setContentView(binding.root)
-        // Implementacao.implementaCategorias(this)
         // Testes.populaTestes(this)
 
         updateUI()
@@ -51,22 +49,15 @@ class MainActivity : AppCompatActivity() {
         recyclerview.layoutManager = LinearLayoutManager(this)
 
         GlobalScope.launch {
-            incidentesLista = db.catincidenteDao().getCategoriaeIncidentes()
+            incidentesLista =
+                db.catincidenteDao().getCategoriaeIncidentes(MinhaRua.cep?.cep.toString())
             catincidentesAdapter = CatIncidentesAdapter(incidentesLista)
             recyclerview.adapter = catincidentesAdapter
-        }
-        val bmb = binding.cmdNovoIncidente
-        for (i in 0 until bmb.getPiecePlaceEnum().pieceNumber()) {
-            val builder = HamButton.Builder()
-                .normalImageRes(com.santis.minharua.R.drawable.ic_carro)
-                .normalTextRes(16)
-                .subNormalTextRes(12)
-            bmb.addBuilder(builder)
         }
     }
 
     override fun onResume() {
         super.onResume()
-        // updateUI()
+        updateUI()
     }
 }

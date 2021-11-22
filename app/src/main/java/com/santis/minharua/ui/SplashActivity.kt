@@ -44,6 +44,7 @@ class SplashActivity : AppCompatActivity() {
 
         // OnClickListener
         binding.cmdOk.setOnClickListener {
+            salvarCep(binding.txtCep.text.toString())
             checaCep(true)
             it.hideKeyboard()
         }
@@ -80,7 +81,6 @@ class SplashActivity : AppCompatActivity() {
             } else {
                 val intent = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
-                finish()
             }
         }
     }

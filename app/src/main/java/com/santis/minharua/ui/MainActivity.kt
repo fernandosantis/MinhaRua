@@ -1,7 +1,9 @@
 package com.santis.minharua.ui
 
+import android.app.Activity
 import android.os.Bundle
 import android.os.StrictMode
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,16 +33,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         // Testes.populaTestes(this)
 
+        // Menu
+
+        setSupportActionBar(binding.bottomAppBar)
+        binding.bottomAppBar.setNavigationOnClickListener { finish() }
+
         updateUI()
     }
 
     private fun updateUI() {
-
-        // Preenche Placa de Rua
-        binding.lblLogradouro.text = MinhaRua.cep?.logradouro
-        binding.lblEndereco.text = MinhaRua.cep?.endereco
-        binding.lblNumero.text = MinhaRua.cep?.complemento
-        binding.lblBairro.text = MinhaRua.cep?.bairro
 
         val db = MinhaRuaDatabase.abrirBanco(this)
         var incidentesLista: List<CategoriaIncidentes>
@@ -53,7 +54,16 @@ class MainActivity : AppCompatActivity() {
                 db.catincidenteDao().getCategoriaeIncidentes(MinhaRua.cep?.cep.toString())
             catincidentesAdapter = CatIncidentesAdapter(incidentesLista)
             recyclerview.adapter = catincidentesAdapter
+/*            if (recyclerview.childCount == 0) {
+                Toast.makeText(this@MainActivity, "No records to show!", Toast.LENGTH_SHORT).show()
+            }*/
         }
+
+        // Preenche Placa de Rua
+        binding.lblLogradouro.text = MinhaRua.cep?.logradouro
+        binding.lblEndereco.text = MinhaRua.cep?.endereco
+        binding.lblNumero.text = MinhaRua.cep?.complemento
+        binding.lblBairro.text = MinhaRua.cep?.bairro
     }
 
     override fun onResume() {

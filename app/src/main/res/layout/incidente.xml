@@ -57,33 +57,33 @@
             />
 
 
-                <TextView
-                    android:id="@+id/lbl_titulo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Incidente"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/grey_90"
-                    android:layout_marginHorizontal="@dimen/spacing_large"
-                    app:layout_constraintStart_toEndOf="@id/img_icone"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/cmd_expandir"
-                    />
+        <TextView
+            android:id="@+id/lbl_titulo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Incidente"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/grey_90"
+            android:layout_marginHorizontal="@dimen/spacing_large"
+            app:layout_constraintStart_toEndOf="@id/img_icone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/cmd_expandir"
+            />
 
-                <TextView
-                    android:id="@+id/lbl_resumo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:maxLines="2"
-                    android:text="Resumo"
-                    android:layout_marginHorizontal="@dimen/spacing_large"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="@color/grey_40"
-                    app:layout_constraintTop_toBottomOf="@id/lbl_titulo"
-                    app:layout_constraintStart_toEndOf="@id/img_icone"
-                    app:layout_constraintEnd_toStartOf="@id/cmd_expandir"
+        <TextView
+            android:id="@+id/lbl_resumo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:text="Resumo"
+            android:layout_marginHorizontal="@dimen/spacing_large"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/grey_40"
+            app:layout_constraintTop_toBottomOf="@id/lbl_titulo"
+            app:layout_constraintStart_toEndOf="@id/img_icone"
+            app:layout_constraintEnd_toStartOf="@id/cmd_expandir"
 
-                    />
+            />
         <ImageButton
             android:id="@+id/cmd_expandir"
             android:layout_width="?attr/actionBarSize"

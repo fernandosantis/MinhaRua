@@ -4,21 +4,21 @@
     <!-- google's material design colours from
     http://www.google.com/design/spec/style/color.html#color-ui-color-palette -->
 
-    <color name="primaryColor">#1a237e</color>
-    <color name="primaryLightColor">#534bae</color>
-    <color name="primaryDarkColor">#000051</color>
+    <color name="primaryColor">#1976D2</color>
+    <color name="primaryLightColor">#1E88E5</color>
+    <color name="primaryDarkColor">#1A237E</color>
     <color name="secondaryColor">#ffc400</color>
     <color name="secondaryLightColor">#fff64f</color>
-    <color name="secondaryDarkColor">#c79400</color>
+    <color name="secondaryDarkColor">#FF6F00</color>
     <color name="primaryTextColor">#f2f2f2</color>
     <color name="secondaryTextColor">#101010</color>
 
     <color name="colorPrimary">#1976D2</color>
-    <color name="colorPrimaryDark">#1565C0</color>
+    <color name="colorPrimaryDark">#1A237E</color>
     <color name="colorPrimaryLight">#1E88E5</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="colorAccentDark">#F50057</color>
-    <color name="colorAccentLight">#FF80AB</color>
+    <color name="colorAccent">#ffc400</color>
+    <color name="colorAccentDark">#FF6F00</color>
+    <color name="colorAccentLight">#fff64f</color>
 
     <color name="overlay_dark_10">#1A000000</color>
     <color name="overlay_dark_20">#33000000</color>

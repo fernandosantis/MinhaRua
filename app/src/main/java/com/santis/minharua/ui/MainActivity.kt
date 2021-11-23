@@ -3,6 +3,7 @@ package com.santis.minharua.ui
 import android.app.Activity
 import android.os.Bundle
 import android.os.StrictMode
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         val db = MinhaRuaDatabase.abrirBanco(this)
         var incidentesLista: List<CategoriaIncidentes>
 
-        val recyclerview = findViewById<RecyclerView>(com.santis.minharua.R.id.rv_incidentes)
+        val recyclerview = binding.rvIncidentes
         recyclerview.layoutManager = LinearLayoutManager(this)
 
         GlobalScope.launch {
@@ -54,9 +55,14 @@ class MainActivity : AppCompatActivity() {
                 db.catincidenteDao().getCategoriaeIncidentes(MinhaRua.cep?.cep.toString())
             catincidentesAdapter = CatIncidentesAdapter(incidentesLista)
             recyclerview.adapter = catincidentesAdapter
-/*            if (recyclerview.childCount == 0) {
-                Toast.makeText(this@MainActivity, "No records to show!", Toast.LENGTH_SHORT).show()
-            }*/
+            if (incidentesLista.isEmpty()) {
+                recyclerview.visibility = View.GONE
+                binding.noLayIncidente.visibility = View.VISIBLE
+
+            } else {
+                binding.noLayIncidente.visibility = View.GONE
+                recyclerview.visibility = View.VISIBLE
+            }
         }
 
         // Preenche Placa de Rua

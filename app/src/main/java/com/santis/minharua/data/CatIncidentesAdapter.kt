@@ -31,7 +31,7 @@ class CatIncidentesAdapter(val incidenteList: List<CategoriaIncidentes>) : Recyc
         // CardView
         val cvCartao = view.findViewById<CardView>(R.id.cv_cartao)
         val imgImagem = view.findViewById<ImageView>(R.id.img_imagem)
-        val lblDescricao = view.findViewById<TextView>(R.id.lbl_descricao)
+        val lblDescricao = view.findViewById<TextView>(R.id.lbl_resumo)
         val cmdEditar = view.findViewById<ImageView>(R.id.cmd_editar)
         val cmdApagar = view.findViewById<ImageView>(R.id.cmd_apagar)
         val cmdCompartilhar = view.findViewById<ImageView>(R.id.cmd_compartilhar)

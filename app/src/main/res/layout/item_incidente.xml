@@ -105,7 +105,7 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="12dp"
                 android:scaleType="centerCrop"
-                app:layout_constraintBottom_toTopOf="@+id/lbl_descricao"
+                app:layout_constraintBottom_toTopOf="@+id/lbl_resumo"
                 app:layout_constraintDimensionRatio="H,16:9"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -113,7 +113,7 @@
                 app:srcCompat="@drawable/ic_city" />
 
             <TextView
-                android:id="@+id/lbl_descricao"
+                android:id="@+id/lbl_resumo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -157,7 +157,7 @@
                 android:padding="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_descricao"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_resumo"
                 app:srcCompat="@drawable/ic_share"
                 app:tint="@color/primaryDarkColor" />
 

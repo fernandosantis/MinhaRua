@@ -40,9 +40,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:hint="CEP"
-            app:boxBackgroundColor="@color/white"
-            app:boxCornerRadiusTopStart="16dp"
-            app:boxStrokeColor="@color/white"
             app:helperText="Digite o Cep de sua rua"
             app:helperTextEnabled="true"
             app:helperTextTextColor="@color/white"
@@ -51,10 +48,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:startIconDrawable="@drawable/ic_location"
-            app:startIconTint="@color/primaryColor">
+            app:startIconTint="@color/white"
+            android:textColorHint="@color/white"
+            app:placeholderTextColor="@color/white"
+            >
 
 
             <com.hipo.maskededittext.MaskedEditText
+                android:textColor="@color/white"
                 android:id="@+id/txt_cep"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

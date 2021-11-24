@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
 
     private lateinit var catincidentesAdapter: CatIncidentesAdapter
-    private lateinit var binding: ActivityMainBinding
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -25,13 +25,9 @@ class MainActivity : AppCompatActivity() {
         StrictMode.setVmPolicy(builder.build())
 
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(
-            layoutInflater
-        )
         setContentView(binding.root)
 
         // Menu
-
         setSupportActionBar(binding.bottomAppBar)
         binding.bottomAppBar.setNavigationOnClickListener { finish() }
 
@@ -41,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateUI() {
 
         val db = MinhaRuaDatabase.abrirBanco(this)
-        var incidentesLista: List<CategoriaIncidentes>
+        var incidentesLista: MutableList<CategoriaIncidentes>
 
         val recyclerview = binding.rvIncidentes
         recyclerview.layoutManager = LinearLayoutManager(this)

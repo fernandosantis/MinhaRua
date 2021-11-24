@@ -9,5 +9,5 @@ import com.santis.minharua.data.model.CategoriaIncidentes
 interface CategoriaIncidentesDao {
     @Transaction
     @Query("SELECT * FROM incidentes INNER JOIN categorias ON cat_id=id_cat WHERE inc_cep LIKE '%' || :ceps || '%'")
-    fun getCategoriaeIncidentes(ceps: String): List<CategoriaIncidentes>
+    fun getCategoriaeIncidentes(ceps: String): MutableList<CategoriaIncidentes>
 }

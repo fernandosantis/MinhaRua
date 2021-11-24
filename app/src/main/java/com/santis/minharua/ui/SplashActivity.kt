@@ -10,9 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.santis.minharua.MinhaRua
 import com.santis.minharua.data.model.CEP
 import com.santis.minharua.databinding.ActivitySplashBinding
-import com.santis.minharua.util.ConvertStreamString
-import com.santis.minharua.util.hideKeyboard
-import com.santis.minharua.util.parteFrase
+import com.santis.minharua.util.*
 import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
@@ -21,7 +19,6 @@ class SplashActivity : AppCompatActivity() {
 
     // Define Variaveis
     // Loading - ProgressBar
-    val anime = Anime()
 
     // ViewBinding
     lateinit var binding: ActivitySplashBinding
@@ -63,7 +60,7 @@ class SplashActivity : AppCompatActivity() {
             if (checaerro == true) {
                 val url = "https://viacep.com.br/ws/" + binding.txtCep.getParsedText()
                     .toString() + "/json/"
-                anime.tradeView(binding.pgCep, binding.lblResp)
+                ViewAnimation.fadeIn(binding.pgCep)
                 MyAsyncTask().execute(url)
             }
         }
@@ -108,7 +105,7 @@ class SplashActivity : AppCompatActivity() {
                 val cidade = json.getString("localidade")
                 val estado = json.getString("uf")
                 val complemento = json.getString("complemento")
-                anime.tradeView(binding.pgCep, binding.lblResp)
+                ViewAnimation.fadeOut(binding.pgCep)
                 MinhaRua.cep = CEP(cep, logradouro, endereco, bairro, cidade, estado, complemento)
                 salvarCep(cep)
             } catch (ex: Exception) {

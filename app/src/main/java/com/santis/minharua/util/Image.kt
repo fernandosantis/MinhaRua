@@ -21,12 +21,23 @@ import java.lang.Exception
 // Para Salvar e Compartilhar Cards
 class Image {
     companion object {
-        fun share(context: Context, card: View) {
-            val bitmap = getScreenShootFromView(card)
 
-            bitmap?.let {
-                saveMediaStorage(context, bitmap)
+        private fun getScreenShootFromView(card: View): Bitmap? {
+
+            var screenshot: Bitmap? = null
+            try {
+                screenshot = Bitmap.createBitmap(
+                    card.measuredWidth,
+                    card.measuredHeight,
+                    Bitmap.Config.ARGB_8888
+                )
+                val canvas = Canvas(screenshot)
+                card.draw(canvas)
+            } catch (e: Exception) {
+                Log.e("Error ->", "Falha ao capturar imagem" + e.message)
             }
+
+            return screenshot
         }
 
         private fun saveMediaStorage(context: Context, bitmap: Bitmap) {
@@ -64,6 +75,14 @@ class Image {
             }
         }
 
+        fun share(context: Context, card: View) {
+            val bitmap = getScreenShootFromView(card)
+
+            bitmap?.let {
+                saveMediaStorage(context, bitmap)
+            }
+        }
+
         private fun shareIntent(context: Context, imageUri: Uri) {
             val shareIntent: Intent = Intent().apply {
                 this.action = Intent.ACTION_SEND
@@ -77,24 +96,6 @@ class Image {
                     context.resources.getText(R.string.label_share)
                 )
             )
-        }
-
-        private fun getScreenShootFromView(card: View): Bitmap? {
-
-            var screenshot: Bitmap? = null
-            try {
-                screenshot = Bitmap.createBitmap(
-                    card.measuredWidth,
-                    card.measuredHeight,
-                    Bitmap.Config.ARGB_8888
-                )
-                val canvas = Canvas(screenshot)
-                card.draw(canvas)
-            } catch (e: Exception) {
-                Log.e("Error ->", "Falha ao capturar imagem" + e.message)
-            }
-
-            return screenshot
         }
     }
 }

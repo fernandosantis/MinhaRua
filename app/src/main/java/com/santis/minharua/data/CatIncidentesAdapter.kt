@@ -1,70 +1,48 @@
 package com.santis.minharua.data
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.santis.minharua.MinhaRua
 import com.santis.minharua.R
 import com.santis.minharua.data.model.CategoriaIncidentes
+import com.santis.minharua.data.model.Incidente
 import com.santis.minharua.util.Image
+import com.santis.minharua.util.ViewAnimation
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class CatIncidentesAdapter(val incidenteList: List<CategoriaIncidentes>) : RecyclerView.Adapter<CatIncidentesAdapter.IncidenteViewHolder>() {
 
     var listenerShare: (View) -> Unit = {}
-
-    inner class IncidenteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
-        // Cabeçalho
-        val imgCatCor = view.findViewById<ImageView>(R.id.img_cat_cor)
-        val imgCatIcon = view.findViewById<ImageView>(R.id.img_cat_icon)
-        val imgIcone = view.findViewById<ImageView>(R.id.img_icone)
-        val lblTitulo = view.findViewById<TextView>(R.id.lbl_titulo)
-        val lblResumo = view.findViewById<TextView>(R.id.lbl_resumo)
-        val cmdExpandir = view.findViewById<ImageView>(R.id.cmd_expandir)
-
-        // CardView
-        val cvCartao = view.findViewById<CardView>(R.id.cv_cartao)
-        val imgImagem = view.findViewById<ImageView>(R.id.img_imagem)
-        val lblDescricao = view.findViewById<TextView>(R.id.lbl_descricao)
-        val lblEndereco = view.findViewById<TextView>(R.id.lbl_endereco)
-        val lblBairro = view.findViewById<TextView>(R.id.lbl_bairro)
-        val lblCategoria = view.findViewById<TextView>(R.id.lbl_categoria)
-
-        // Menu        
-        val cmdEditar = view.findViewById<ImageView>(R.id.cmd_editar)
-        val cmdApagar = view.findViewById<ImageView>(R.id.cmd_apagar)
-        val cmdCompartilhar = view.findViewById<ImageView>(R.id.cmd_compartilhar)
-    }
-
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): IncidenteViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_incidente, parent, false)
-        return IncidenteViewHolder(view)
+    override fun getItemCount(): Int {
+        return incidenteList.size
     }
 
     override fun onBindViewHolder(holder: IncidenteViewHolder, position: Int) {
         with(holder) {
             // Cabeçalho
-            imgCatCor.setColorFilter(ContextCompat.getColor(imgCatCor.context, incidenteList[position].categoria.corCat), android.graphics.PorterDuff.Mode.SRC_IN);
+            imgCatCor.setColorFilter(ContextCompat.getColor(imgCatCor.context, incidenteList[position].categoria.corCat), android.graphics.PorterDuff.Mode.SRC_IN)
             imgCatIcon.setImageResource(incidenteList[position].categoria.iconeCat)
             imgIcone.setImageResource(incidenteList[position].incidentes[0].imagemInc)
             lblTitulo.text = incidenteList[position].incidentes[0].tituloInc
-            lblResumo.text = incidenteList[position].incidentes[0].descricaoInc
-            lblResumo.visibility = View.VISIBLE
-
             cmdExpandir.setImageResource(R.drawable.ic_down)
             cmdExpandir.tag = "off"
 
             // CardView
             cvCartao.visibility = View.GONE
+            lblTitulo2.text = incidenteList[position].incidentes[0].tituloInc
             imgImagem.setImageResource(incidenteList[position].incidentes[0].imagemInc)
+            imgImagem.animate().alpha(0.0f)
             lblDescricao.text = incidenteList[position].incidentes[0].descricaoInc
             lblEndereco.text = "${MinhaRua.cep?.logradouro} ${MinhaRua.cep?.endereco}"
             lblBairro.text = MinhaRua.cep?.bairro
@@ -74,18 +52,23 @@ class CatIncidentesAdapter(val incidenteList: List<CategoriaIncidentes>) : Recyc
             // Botão Expandir
             cmdExpandir.setOnClickListener(
                 View.OnClickListener {
+
                     if (cmdExpandir.tag == "off") {
                         // lblResumo.visibility = View.INVISIBLE
-                        lblResumo.animate().alpha(0.0f)
-                        cvCartao.visibility = View.VISIBLE
+                        lblTitulo.animate().alpha(0.25f)
+                        /*cvCartao.visibility = View.VISIBLE*/
                         cmdExpandir.setImageResource(R.drawable.ic_up)
+                        toggleLayoutExpand(true, it, cvCartao)
                         cmdExpandir.tag = "on"
+                        imgImagem.animate().alpha(1.0f).startDelay = 1000
                     } else {
                         // lblResumo.visibility = View.VISIBLE
-                        lblResumo.animate().alpha(1.0f)
-                        cvCartao.visibility = View.GONE
+                        lblTitulo.animate().alpha(1.0f)
+                        /*cvCartao.visibility = View.GONE*/
                         cmdExpandir.setImageResource(R.drawable.ic_down)
                         cmdExpandir.tag = "off"
+                        toggleLayoutExpand(false, it, cvCartao)
+                        imgImagem.animate().alpha(0.0f)
                     }
                 }
             )
@@ -98,10 +81,61 @@ class CatIncidentesAdapter(val incidenteList: List<CategoriaIncidentes>) : Recyc
 
                 listenerShare(cvCartao)
             }
+
+            // Botão Apagar
+            cmdApagar.setOnClickListener {
+                val builder = AlertDialog.Builder(contexto)
+                builder.setTitle("Confirma Exclusão do Incidente ?")
+                builder.setPositiveButton(
+                    "Excluir",
+                    { dialogInterface, i ->
+                        GlobalScope.launch {
+                            val db = MinhaRuaDatabase.abrirBanco(contexto)
+                            val incidente: Incidente = incidenteList[position].incidentes.first()
+                            db.incidenteDao().excluirIncidente(incidente)
+                        }
+                        Snackbar.make(it, "Incidente Excluido", Snackbar.LENGTH_SHORT).show()
+                    }
+                )
+                builder.setNegativeButton("Cancelar", null)
+                builder.show()
+            }
         }
     }
 
-    override fun getItemCount(): Int {
-        return incidenteList.size
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): IncidenteViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_incidente, parent, false)
+        return IncidenteViewHolder(view)
+    }
+
+    private fun toggleLayoutExpand(show: Boolean, view: View, lyt_expand: View): Boolean {
+        if (show) {
+            ViewAnimation.expand(lyt_expand)
+        } else {
+            ViewAnimation.collapse(lyt_expand)
+        }
+        return show
+    }
+
+    inner class IncidenteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val cvCartao = view.findViewById<CardView>(R.id.cv_cartao)
+        val cmdApagar = view.findViewById<ImageView>(R.id.cmd_apagar)
+        val cmdCompartilhar = view.findViewById<ImageView>(R.id.cmd_compartilhar)
+        val cmdEditar = view.findViewById<ImageView>(R.id.cmd_editar)
+        val cmdExpandir = view.findViewById<ImageView>(R.id.cmd_expandir)
+        val contexto: Context = view.findViewById<ConstraintLayout>(R.id.root_item).context
+        val imgCatCor = view.findViewById<ImageView>(R.id.img_cat_cor)
+        val imgCatIcon = view.findViewById<ImageView>(R.id.img_cat_icon)
+        val imgIcone = view.findViewById<ImageView>(R.id.img_icone)
+        val imgImagem = view.findViewById<ImageView>(R.id.img_imagem)
+        val lblBairro = view.findViewById<TextView>(R.id.lbl_bairro)
+        val lblCategoria = view.findViewById<TextView>(R.id.lbl_categoria)
+        val lblDescricao = view.findViewById<TextView>(R.id.lbl_descricao)
+        val lblEndereco = view.findViewById<TextView>(R.id.lbl_endereco)
+        val lblTitulo = view.findViewById<TextView>(R.id.lbl_titulo)
+        val lblTitulo2 = view.findViewById<TextView>(R.id.lbl_titulo_2)
     }
 }

@@ -6,12 +6,10 @@ import android.content.SharedPreferences
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.santis.minharua.MinhaRua
 import com.santis.minharua.data.model.CEP
 import com.santis.minharua.databinding.ActivitySplashBinding
-import com.santis.minharua.util.Anime
 import com.santis.minharua.util.ConvertStreamString
 import com.santis.minharua.util.hideKeyboard
 import com.santis.minharua.util.parteFrase
@@ -42,6 +40,8 @@ class SplashActivity : AppCompatActivity() {
         MinhaRua.cep = null
         checaCep(false)
 
+        // Testes.populaTestes(this)
+
         // OnClickListener
         binding.cmdOk.setOnClickListener {
             salvarCep(binding.txtCep.text.toString())
@@ -57,30 +57,14 @@ class SplashActivity : AppCompatActivity() {
         val strCep = binding.txtCep.getParsedText().toString()
         if (strCep.length != 8) {
             if (checaerro == true) {
-                binding.tilCep.error = binding.tilCep.helperText
-                Toast.makeText(
-                    this,
-                    "Cep inválido ou Imcompleto!",
-                    Toast.LENGTH_SHORT
-                ).show()
+                binding.tilCep.error = "CEP inválido ou incompleto."
             }
         } else {
-            val url = "https://viacep.com.br/ws/" + binding.txtCep.getParsedText()
-                .toString() + "/json/"
-            anime.tradeView(binding.pgCep, binding.lblResp)
-            MyAsyncTask().execute(url)
-            if (MinhaRua.cep == null) {
-                if (checaerro == true) {
-                    binding.tilCep.error = binding.tilCep.helperText
-                    Toast.makeText(
-                        this,
-                        "Cep inválido ou Imcompleto!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            } else {
-                val intent = Intent(applicationContext, MainActivity::class.java)
-                startActivity(intent)
+            if (checaerro == true) {
+                val url = "https://viacep.com.br/ws/" + binding.txtCep.getParsedText()
+                    .toString() + "/json/"
+                anime.tradeView(binding.pgCep, binding.lblResp)
+                MyAsyncTask().execute(url)
             }
         }
     }
@@ -103,9 +87,19 @@ class SplashActivity : AppCompatActivity() {
             return ""
         }
 
+        override fun onPostExecute(result: String?) {
+            super.onPostExecute(result)
+            if (MinhaRua.cep == null) {
+                binding.tilCep.error = "CEP inválido ou incompleto."
+            } else {
+                val intent = Intent(applicationContext, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
         // Cria Progressbar enquando faz consulta do CEP
         override fun onProgressUpdate(vararg params: String?) {
             try {
+                MinhaRua.cep = null
                 var json = JSONObject(params[0])
                 val cep = json.getString("cep")
                 val logradouro = parteFrase(json.getString("logradouro"), "L")

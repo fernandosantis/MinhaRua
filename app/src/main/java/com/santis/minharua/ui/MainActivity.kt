@@ -1,13 +1,10 @@
 package com.santis.minharua.ui
 
-import android.app.Activity
 import android.os.Bundle
 import android.os.StrictMode
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.santis.minharua.MinhaRua
 import com.santis.minharua.data.CatIncidentesAdapter
 import com.santis.minharua.data.MinhaRuaDatabase
@@ -32,7 +29,6 @@ class MainActivity : AppCompatActivity() {
             layoutInflater
         )
         setContentView(binding.root)
-        // Testes.populaTestes(this)
 
         // Menu
 
@@ -58,7 +54,6 @@ class MainActivity : AppCompatActivity() {
             if (incidentesLista.isEmpty()) {
                 recyclerview.visibility = View.GONE
                 binding.noLayIncidente.visibility = View.VISIBLE
-
             } else {
                 binding.noLayIncidente.visibility = View.GONE
                 recyclerview.visibility = View.VISIBLE

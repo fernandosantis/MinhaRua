@@ -14,8 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MinhaRua">
         <activity
-            android:name=".ui.AddIncidenteActivity"
-            android:exported="true" />
+            android:name=".ui.AddIncidente"
+            android:exported="false" />
         <activity
             android:name=".ui.SplashActivity"
             android:exported="true">
@@ -27,7 +27,7 @@
         </activity>
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.MinhaRua.Material"
+    tools:context=".ui.AddIncidente"
+    >
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/lay_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Adicionar Incidente"
+            app:navigationIcon="@drawable/ic_back"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:contentInsetStartWithNavigation="16dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lay_local"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_large"
+        android:layout_marginVertical="@dimen/spacing_xmedium"
+        app:layout_constraintTop_toBottomOf="@id/lay_toolbar"
+        >
+
+        <ImageButton
+            android:id="@+id/ic_local"
+            android:layout_width="@dimen/spacing_mxlarge"
+            android:layout_height="@dimen/spacing_mxlarge"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/ic_location"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@color/grey_60" />
+
+            <TextView
+                android:id="@+id/lbl_local"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Rua Dona Balbina, 40"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ic_local"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+            <TextView
+                android:id="@+id/lbl_bairro"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Centro"
+                app:layout_constraintTop_toBottomOf="@id/lbl_local"
+                app:layout_constraintStart_toEndOf="@id/ic_local"
+                app:layout_constraintEnd_toStartOf="@id/lbl_cep"
+                />
+        <TextView
+            android:id="@+id/lbl_cep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="13660-000"
+            app:layout_constraintTop_toBottomOf="@id/lbl_local"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/lbl_bairro"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/img_foto"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="16:9"
+        app:srcCompat="@drawable/bg_no_item"
+        app:layout_constraintTop_toBottomOf="@id/lay_local"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    app:layout_constraintTop_toBottomOf="@id/img_foto"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:padding="@dimen/spacing_large"
+    app:layout_constraintBottom_toBottomOf="parent"
+    >
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cbo_categoria"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_marginVertical="@dimen/spacing_large"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/grey_40"
+        app:startIconDrawable="@drawable/ic_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_titulo"
+        android:hint="Categoria"
+        >
+
+        <AutoCompleteTextView
+            android:id="@+id/cbo_cat_autocomplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:maxLines="1"
+            android:focusable="false"
+            android:textIsSelectable="false"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/grey_40"
+        app:helperText="Título do Incidente"
+        app:startIconDrawable="@drawable/ic_titulo"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        >
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Titulo"
+            android:inputType="text"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_descricao"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_marginVertical="@dimen/spacing_large"
+        android:layout_height="0dp"
+        android:textColorHint="@color/grey_40"
+        app:startIconDrawable="@drawable/ic_descricao"
+        app:helperText="Descrição do Incidente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cbo_categoria"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:lines="3"
+            android:maxLines="3"
+            android:layout_height="wrap_content"
+            android:hint="Descrição"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/cmd_foto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_smlarge"
+        android:layout_marginBottom="-16dp"
+        android:clickable="true"
+        app:tint="@android:color/white"
+        app:backgroundTint="@color/primaryDarkColor"
+        app:fabSize="normal"
+        app:rippleColor="@android:color/white"
+        app:srcCompat="@drawable/ic_camera"
+        app:layout_constraintEnd_toEndOf="@id/img_foto"
+        app:layout_constraintBottom_toBottomOf="@id/img_foto"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

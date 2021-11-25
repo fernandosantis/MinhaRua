@@ -37,7 +37,7 @@ class SplashActivity : AppCompatActivity() {
         MinhaRua.cep = null
         checaCep(false)
 
-        // Testes.populaTestes(this)
+        Testes.populaTestes(this)
 
         // OnClickListener
         binding.cmdOk.setOnClickListener {

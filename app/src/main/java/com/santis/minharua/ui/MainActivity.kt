@@ -1,12 +1,13 @@
 package com.santis.minharua.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.StrictMode
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.santis.minharua.MinhaRua
-import com.santis.minharua.data.CatIncidentesAdapter
+import com.santis.minharua.data.MainAdapter
 import com.santis.minharua.data.MinhaRuaDatabase
 import com.santis.minharua.data.model.CategoriaIncidentes
 import com.santis.minharua.databinding.ActivityMainBinding
@@ -15,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var catincidentesAdapter: CatIncidentesAdapter
+    private lateinit var catincidentesAdapter: MainAdapter
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +32,12 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.bottomAppBar)
         binding.bottomAppBar.setNavigationOnClickListener { finish() }
 
+        // Adicionar Incidente - FAB Buttom
+        binding.cmdAddIncidente.setOnClickListener {
+            val intent = Intent(this, AddIncidente::class.java)
+            startActivity(intent)
+        }
+
         updateUI()
     }
 
@@ -45,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         GlobalScope.launch {
             incidentesLista =
                 db.catincidenteDao().getCategoriaeIncidentes(MinhaRua.cep?.cep.toString())
-            catincidentesAdapter = CatIncidentesAdapter(incidentesLista)
+            catincidentesAdapter = MainAdapter(incidentesLista)
             recyclerview.adapter = catincidentesAdapter
             if (incidentesLista.isEmpty()) {
                 recyclerview.visibility = View.GONE
@@ -54,8 +61,8 @@ class MainActivity : AppCompatActivity() {
                 binding.noLayIncidente.visibility = View.GONE
                 recyclerview.visibility = View.VISIBLE
             }
-        }
 
+        }
         // Preenche Placa de Rua
         binding.lblLogradouro.text = MinhaRua.cep?.logradouro
         binding.lblEndereco.text = MinhaRua.cep?.endereco

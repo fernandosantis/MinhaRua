@@ -23,4 +23,7 @@ interface CategoriaDao {
 
     @Query("SELECT * FROM categorias ORDER BY cat_nome")
     suspend fun todasCategorias(): List<Categoria>
+
+    @Query("SELECT cat_nome FROM categorias ORDER BY cat_nome")
+    fun todosNomesCategorias(): List<String>
 }

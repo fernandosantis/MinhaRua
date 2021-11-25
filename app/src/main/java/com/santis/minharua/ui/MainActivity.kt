@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity() {
                 binding.noLayIncidente.visibility = View.GONE
                 recyclerview.visibility = View.VISIBLE
             }
-
         }
         // Preenche Placa de Rua
         binding.lblLogradouro.text = MinhaRua.cep?.logradouro

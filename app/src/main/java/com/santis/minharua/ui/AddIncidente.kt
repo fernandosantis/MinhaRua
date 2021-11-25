@@ -1,36 +1,22 @@
 package com.santis.minharua.ui
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Environment
 import android.view.Menu
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.santis.minharua.MinhaRua
 import com.santis.minharua.R
 import com.santis.minharua.data.MinhaRuaDatabase
 import com.santis.minharua.databinding.ActivityAddIncidenteBinding
-import io.fotoapparat.Fotoapparat
-import io.fotoapparat.log.logcat
-import io.fotoapparat.log.loggers
-import io.fotoapparat.parameter.ScaleType
-import io.fotoapparat.selector.back
-import io.fotoapparat.view.CameraView
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import java.io.File
 
 class AddIncidente : AppCompatActivity() {
 
     private val binding by lazy { ActivityAddIncidenteBinding.inflate(layoutInflater) }
     lateinit var categoriaLista: List<String>
     lateinit var categoriaAdapter: ArrayAdapter<String>
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,13 +30,12 @@ class AddIncidente : AppCompatActivity() {
         // Preencher Categorias
         updateUI()
 
-
         binding.cmdFoto.setOnClickListener {
             Toast.makeText(applicationContext, "Implantar Fazer Foto", Toast.LENGTH_LONG).show()
         }
     }
 
-        private fun updateUI() {
+    private fun updateUI() {
 
         val autoCompleteTextView: AutoCompleteTextView = binding.cboCatAutocomplete
         val db = MinhaRuaDatabase.abrirBanco(applicationContext)
@@ -71,6 +56,4 @@ class AddIncidente : AppCompatActivity() {
         menuInflater.inflate(R.menu.menu_add_incidente, menu)
         return true
     }
-
-
 }

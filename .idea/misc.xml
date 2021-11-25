@@ -9,6 +9,7 @@
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_arvore.xml" value="0.21666666666666667" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_back.xml" value="0.24166666666666667" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_camera.xml" value="0.11614583333333334" />
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_capturar_foto.xml" value="0.30925925925925923" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_carro.xml" value="0.1984375" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_city.xml" value="0.32314814814814813" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/ic_color.xml" value="0.21666666666666667" />
@@ -30,6 +31,7 @@
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/vc_street.xml" value="0.1984375" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/activity_add_incident.xml" value="0.36390827517447655" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/activity_add_incidente.xml" value="0.2712962962962963" />
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/activity_camera.xml" value="0.35989583333333336" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/activity_main.xml" value="0.20052083333333334" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/activity_splash.xml" value="0.35435897435897434" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/add_incidente.xml" value="0.35989583333333336" />

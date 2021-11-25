@@ -7,7 +7,6 @@ public class MinhaRua : Application() {
     companion object {
         @JvmField
         var cep: CEP? = null
-
     }
 
     override fun onCreate() {

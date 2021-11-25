@@ -18,12 +18,10 @@ import com.santis.minharua.data.model.CategoriaIncidentes
 import com.santis.minharua.data.model.Incidente
 import com.santis.minharua.util.Image
 import com.santis.minharua.util.ViewAnimation
-import com.santis.minharua.util.ViewAnimation.fadeIn
-import com.santis.minharua.util.ViewAnimation.fadeOut
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class CatIncidentesAdapter(val incidenteList: MutableList<CategoriaIncidentes>) : RecyclerView.Adapter<CatIncidentesAdapter.IncidenteViewHolder>() {
+class MainAdapter(val incidenteList: MutableList<CategoriaIncidentes>) : RecyclerView.Adapter<MainAdapter.IncidenteViewHolder>() {
 
     var listenerShare: (View) -> Unit = {}
     override fun getItemCount(): Int {
@@ -44,7 +42,7 @@ class CatIncidentesAdapter(val incidenteList: MutableList<CategoriaIncidentes>) 
             cvCartao.visibility = View.GONE
             lblTitulo2.text = incidenteList[position].incidentes[0].tituloInc
             imgImagem.setImageResource(incidenteList[position].incidentes[0].imagemInc)
-            fadeOut(imgImagem)
+            /*fadeOut(imgImagem)*/
             lblDescricao.text = incidenteList[position].incidentes[0].descricaoInc
             lblEndereco.text = "${MinhaRua.cep?.logradouro} ${MinhaRua.cep?.endereco}"
             lblBairro.text = MinhaRua.cep?.bairro
@@ -61,7 +59,7 @@ class CatIncidentesAdapter(val incidenteList: MutableList<CategoriaIncidentes>) 
                         cmdExpandir.setImageResource(R.drawable.ic_up)
                         toggleLayoutExpand(true, it, cvCartao)
                         cmdExpandir.tag = "on"
-                        fadeIn(imgImagem)
+                        /*fadeIn(imgImagem)*/
                     } else {
                         // lblResumo.visibility = View.VISIBLE
                         lblTitulo.animate().alpha(1.0f)
@@ -69,7 +67,7 @@ class CatIncidentesAdapter(val incidenteList: MutableList<CategoriaIncidentes>) 
                         cmdExpandir.setImageResource(R.drawable.ic_down)
                         cmdExpandir.tag = "off"
                         toggleLayoutExpand(false, it, cvCartao)
-                        fadeOut(imgImagem)
+                        /*fadeOut(imgImagem)*/
                     }
                 }
             )

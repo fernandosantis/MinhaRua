@@ -54,7 +54,8 @@ dependencies {
     // MakeditText
     implementation 'com.hipo.maskededittext:maskededittext:1.2.10'
 
-
+    //Fotoapparat
+    implementation 'io.fotoapparat:fotoapparat:2.6.1'
 
 
 
